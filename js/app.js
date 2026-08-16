@@ -188,14 +188,13 @@ function productCardEl(p) {
     ${!disponible ? `<span class="stock-badge">Agotado</span>` : ""}
     <div class="product-image">${imageOrPlaceholder(p)}</div>
     <div class="product-info">
-      <div class="product-top-row">
-        <span class="product-category">${p.categoria || ""}</span>
-        ${estatusBadgeHTML(p, disponible)}
-      </div>
       <span class="product-name">${p.descripcion || "Sin nombre"}</span>
-      ${p.uso ? `<span class="product-uso">${p.uso}</span>` : ""}
       <span class="product-code">Cód. ${p.codigo}${p.marca ? " · " + p.marca : ""}</span>
-      <span class="product-price">${CONFIG.CURRENCY_SYMBOL}${p.precio.toFixed(2)}</span>
+      ${p.uso ? `<span class="product-uso">${p.uso}</span>` : ""}
+      <div class="product-bottom-row">
+        ${estatusBadgeHTML(p, disponible)}
+        <span class="product-price">${CONFIG.CURRENCY_SYMBOL}${p.precio.toFixed(2)}</span>
+      </div>
       <button class="select-btn ${isSelected ? "selected" : ""}" ${disponible ? "" : "disabled"}>
         ${isSelected ? "Seleccionado ✓" : "Seleccionar"}
       </button>
