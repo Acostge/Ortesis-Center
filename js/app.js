@@ -19,7 +19,26 @@ document.addEventListener("DOMContentLoaded", () => {
   setupZonaSelect();
   setupCategoriaSelect();
   cargarTodasLasZonas();
+  cargarImagenInicio();
 });
+
+/* ---------------- IMAGEN DE INICIO (automática) ---------------- */
+function cargarImagenInicio(extIndex = 0) {
+  if (extIndex >= CONFIG.IMAGE_EXTENSIONS.length) return; // no se encontró, se queda el texto de ayuda
+  const ext = CONFIG.IMAGE_EXTENSIONS[extIndex];
+  const src = `${CONFIG.IMAGE_BASE_PATH}${CONFIG.HERO_IMAGE_NAME}.${ext}`;
+  const img = new Image();
+  img.onload = () => {
+    const slot = document.getElementById("hero-image-slot");
+    slot.style.backgroundImage = `url('${src}')`;
+    slot.style.backgroundSize = "cover";
+    slot.style.backgroundPosition = "center";
+    const note = document.getElementById("hero-placeholder-note");
+    if (note) note.style.display = "none";
+  };
+  img.onerror = () => cargarImagenInicio(extIndex + 1);
+  img.src = src;
+}
 
 /* ---------------- NAVEGACIÓN ---------------- */
 function setupNav() {
@@ -169,8 +188,12 @@ function productCardEl(p) {
     ${!disponible ? `<span class="stock-badge">Agotado</span>` : ""}
     <div class="product-image">${imageOrPlaceholder(p)}</div>
     <div class="product-info">
-      <span class="product-category">${p.categoria || ""}</span>
+      <div class="product-top-row">
+        <span class="product-category">${p.categoria || ""}</span>
+        ${estatusBadgeHTML(p, disponible)}
+      </div>
       <span class="product-name">${p.descripcion || "Sin nombre"}</span>
+      ${p.uso ? `<span class="product-uso">${p.uso}</span>` : ""}
       <span class="product-code">Cód. ${p.codigo}${p.marca ? " · " + p.marca : ""}</span>
       <span class="product-price">${CONFIG.CURRENCY_SYMBOL}${p.precio.toFixed(2)}</span>
       <button class="select-btn ${isSelected ? "selected" : ""}" ${disponible ? "" : "disabled"}>
@@ -180,6 +203,12 @@ function productCardEl(p) {
   `;
   card.querySelector(".select-btn").addEventListener("click", () => toggleSeleccion(p));
   return card;
+}
+
+function estatusBadgeHTML(p, disponible) {
+  const texto = disponible ? "Disponible" : (p.estatus || "Agotado");
+  const clase = disponible ? "estatus-disponible" : "estatus-agotado";
+  return `<span class="estatus-badge ${clase}">${texto}</span>`;
 }
 
 function imageOrPlaceholder(p) {
