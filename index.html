@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Órtesis Center — Catálogo Digital</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <header id="app-header">
+    <div class="logo-mark">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V4"/><path d="M6 14v6"/><path d="M18 14v6"/></svg>
+    </div>
+    <div class="brand-name" id="brand-name-text"><!-- se llena por JS con CONFIG.BRAND_NAME --></div>
+  </header>
+
+  <main id="views">
+
+    <!-- ===================== INICIO ===================== -->
+    <section id="view-inicio" class="view active">
+      <div class="hero-card">
+        <div class="hero-image" id="hero-image-slot">
+          <div class="placeholder-note">Aquí irá la imagen de presentación de tu marca.<br>Reemplaza este bloque en index.html cuando la tengas lista.</div>
+        </div>
+        <div class="hero-body">
+          <h1>Catálogo de Órtesis Profesionales</h1>
+          <p>Explora nuestra selección por zona anatómica, encuentra el producto ideal y coordina tu compra directamente con nuestro equipo por WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="quick-links">
+        <div class="quick-link" data-goto="catalogo">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+          <span>Ver catálogo</span>
+        </div>
+        <div class="quick-link" data-goto="compartir">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+          <span>Mi selección</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CATALOGO ===================== -->
+    <section id="view-catalogo" class="view">
+      <h2 class="section-title">Catálogo</h2>
+
+      <div class="field-group">
+        <label class="field-label" for="select-zona">Zona anatómica</label>
+        <div class="select-wrap">
+          <select id="select-zona">
+            <option value="">Selecciona la zona anatómica...</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label class="field-label" for="select-categoria">Producto de órtesis</label>
+        <div class="select-wrap">
+          <select id="select-categoria" disabled>
+            <option value="">Todas las categorías</option>
+          </select>
+        </div>
+      </div>
+
+      <p class="results-count" id="results-count"></p>
+
+      <div class="product-grid" id="product-grid"></div>
+    </section>
+
+    <!-- ===================== COMPARTIR ===================== -->
+    <section id="view-compartir" class="view">
+      <h2 class="section-title">Mi selección</h2>
+      <div id="selection-container"></div>
+    </section>
+
+  </main>
+
+  <nav id="bottom-nav">
+    <button class="nav-btn active" data-view="inicio">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"/></svg>
+      <span>Inicio</span>
+    </button>
+    <button class="nav-btn" data-view="catalogo">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <span>Catálogo</span>
+    </button>
+    <button class="nav-btn" data-view="compartir">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>
+      <span>Compartir</span>
+      <span class="nav-badge" id="nav-badge" style="display:none;">0</span>
+    </button>
+  </nav>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+<script src="js/config.js"></script>
+<script src="js/mock-data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
