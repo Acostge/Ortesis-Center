@@ -53,6 +53,15 @@ const CONFIG = {
   IMAGE_EXTENSIONS: ["jpg", "jpeg", "png", "webp"], // orden de búsqueda
 
   // ---------------------------------------------------------------
+  // 4b) IMAGEN DE INICIO
+  //    Solo sube tu archivo a la carpeta images/ con este nombre
+  //    (cualquiera de estas extensiones funciona). No necesitas tocar
+  //    nada más — la app la detecta y la muestra sola.
+  //    Ejemplo: images/INICIO.jpg
+  // ---------------------------------------------------------------
+  HERO_IMAGE_NAME: "INICIO",
+
+  // ---------------------------------------------------------------
   // 5) MARCA / TEXTOS
   // ---------------------------------------------------------------
   BRAND_NAME: "ÓRTESIS CENTER",
