@@ -189,7 +189,7 @@ function productCardEl(p) {
     <div class="product-image">${imageOrPlaceholder(p)}</div>
     <div class="product-info">
       <span class="product-name">${p.descripcion || "Sin nombre"}</span>
-      <span class="product-code">Cód. ${p.codigo}${p.marca ? " · " + p.marca : ""}</span>
+      <span class="product-code">REF. ${p.codigo}${p.marca ? " · " + p.marca : ""}</span>
       ${p.uso ? `<span class="product-uso">${p.uso}</span>` : ""}
       <div class="product-bottom-row">
         ${estatusBadgeHTML(p, disponible)}
