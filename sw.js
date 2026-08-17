@@ -7,7 +7,7 @@
    usa como respaldo si el cliente abre la app sin conexión.
    ========================================================= */
 
-const CACHE_NAME = "ortesis-center-v2";
+const CACHE_NAME = "ortesis-center-v3";
 
 const APP_SHELL = [
   "./",
