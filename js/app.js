@@ -291,7 +291,7 @@ function renderSelection() {
           <div class="product-image" id="sel-img-${p.codigo}">${placeholderIconSVG()}</div>
           <div class="selection-item-info">
             <div class="name">${p.descripcion}</div>
-            <div class="meta">Cód. ${p.codigo} · ${CONFIG.CURRENCY_SYMBOL}${p.precio.toFixed(2)}</div>
+            <div class="meta">REF. ${p.codigo} · ${CONFIG.CURRENCY_SYMBOL}${p.precio.toFixed(2)}</div>
           </div>
           <button class="remove-btn" data-codigo="${p.codigo}">&times;</button>
         </div>
@@ -329,7 +329,7 @@ function enviarPorWhatsapp() {
 
   let mensaje = `${CONFIG.WHATSAPP_INTRO_MESSAGE}\n\n`;
   items.forEach((p, i) => {
-    mensaje += `${i + 1}. ${p.descripcion} (Cód. ${p.codigo}) — ${CONFIG.CURRENCY_SYMBOL}${p.precio.toFixed(2)}\n`;
+    mensaje += `${i + 1}. ${p.descripcion} (REF. ${p.codigo}) — ${CONFIG.CURRENCY_SYMBOL}${p.precio.toFixed(2)}\n`;
   });
   const total = items.reduce((sum, p) => sum + p.precio, 0);
   mensaje += `\nTotal referencial: ${CONFIG.CURRENCY_SYMBOL}${total.toFixed(2)}`;
