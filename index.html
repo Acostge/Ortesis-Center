@@ -4,6 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Órtesis Center — Catálogo Digital</title>
+
+<!-- PWA: instalación en el celular -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0B3B60">
+<link rel="icon" href="images/favicon.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Órtesis Center">
+
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,7 +22,7 @@
 
   <header id="app-header">
     <div class="logo-mark">
-      <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4v6a4 4 0 0 0 4 4h0a4 4 0 0 0 4-4V4"/><path d="M6 14v6"/><path d="M18 14v6"/></svg>
+      <img src="images/logo.png" alt="Órtesis Center">
     </div>
     <div class="brand-name" id="brand-name-text"><!-- se llena por JS con CONFIG.BRAND_NAME --></div>
   </header>
