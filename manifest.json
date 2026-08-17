@@ -1,6 +1,6 @@
 {
-  "name": "Órtesis Center — Catálogo Digital",
-  "short_name": "Órtesis Center",
+  "name": "Órtesis Center",
+  "short_name": "OC",
   "description": "Catálogo digital de órtesis por zona anatómica, con selección y envío por WhatsApp.",
   "start_url": "./index.html",
   "scope": "./",
