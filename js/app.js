@@ -20,7 +20,30 @@ document.addEventListener("DOMContentLoaded", () => {
   setupCategoriaSelect();
   cargarTodasLasZonas();
   cargarImagenInicio();
+  registrarServiceWorker();
 });
+
+/* ---------------- PWA: instalación + autoactualización ---------------- */
+function registrarServiceWorker() {
+  if (!("serviceWorker" in navigator)) return;
+
+  const yaHabiaUnoActivo = !!navigator.serviceWorker.controller;
+
+  navigator.serviceWorker.register("sw.js").then((registration) => {
+    // Si hay una versión nueva del service worker (subiste cambios a GitHub),
+    // la activa de inmediato y recarga para mostrar lo último, sin que el
+    // usuario tenga que hacer nada. (No recarga en la primerísima instalación).
+    registration.addEventListener("updatefound", () => {
+      const nuevo = registration.installing;
+      if (!nuevo) return;
+      nuevo.addEventListener("statechange", () => {
+        if (nuevo.state === "activated" && yaHabiaUnoActivo) {
+          window.location.reload();
+        }
+      });
+    });
+  }).catch((err) => console.warn("No se pudo registrar el service worker:", err));
+}
 
 /* ---------------- IMAGEN DE INICIO (automática) ---------------- */
 function cargarImagenInicio(extIndex = 0) {
